@@ -1,7 +1,7 @@
 from MazeRunner import *
 import math
 
-def euclidean(initial_map): # Computes A* manhattan distance
+def euclidean(initial_map): # Computes A* euclidean distance
     euclidean_map=initial_map
 
     for i in range(len(euclidean_map)):
