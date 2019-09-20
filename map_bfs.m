@@ -1,6 +1,6 @@
-function [ output ] = map_dfs( map )
-% Takes in dim X dim map of 0's and 1's. Uses Depth First Search to find
-% path from start to goal. Returns that path as a list of nodes from start
+function [ output ] = map_bfs( map )
+% Takes in dim X dim map of 0's and 1's. Uses Breadth First Search to find
+% path from start to goal. Returns that path. Returns that path as a list of nodes from start
 % node to goal node.
 
 dim = length(map);
@@ -16,8 +16,8 @@ fringed{1} = start; % list of states in order they were added to the fringe
 fg_parents{1} = start; % list of parents of each state in fringed list
 
 while length(fg) ~= 0
-    st = fg{length(fg)}; % state. 2-d vec from fg. newest in fg.
-    fg(length(fg)) = []; % removes state from fg
+    st = fg{1}; % state. 2-d vec from fg. newest in fg.
+    fg(1) = []; % removes state from fg
     if st == goal
         visited{length(visited)+1} = st;
         parent_list{length(parent_list)+1} = st_prev;
@@ -73,7 +73,7 @@ while length(fg) ~= 0
                     if flag == 0
                         fg{length(fg)+1} = ch; %finally adds child to fringe
                         fringed{length(fringed)+1} = ch;
-                        fg_parents{length(fg_parents)+1} = st;
+                        fg_parents{length(fg_parents)+1} = st; 
                     end
                 end
             end
