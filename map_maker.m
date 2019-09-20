@@ -15,8 +15,8 @@ for i = 1:dim
             map(i,j) = 0;
     end
 end
-map(1,1) = 2;
-map(dim,dim) = 3;
+map(1,1) = 0;
+map(dim,dim) = 0;
 
 output = map;
 end
