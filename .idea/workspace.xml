@@ -3,8 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="40461073-729e-4a39-862f-bfc9479c83d0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MazeRunner.py" beforeDir="false" afterPath="$PROJECT_DIR$/MazeRunner.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/astar_euclidean.py" beforeDir="false" afterPath="$PROJECT_DIR$/astar_euclidean.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dfs_algo.py" beforeDir="false" afterPath="$PROJECT_DIR$/dfs_algo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/astar_manhattan.py" beforeDir="false" afterPath="$PROJECT_DIR$/astar_manhattan.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,11 +24,29 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/astar_manhattan.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="417">
+              <caret line="92" selection-start-line="92" selection-end-line="92" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dfs_algo.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="120">
               <caret line="21" column="21" lean-forward="true" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/astar_euclidean.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="403">
+              <caret line="93" column="35" selection-start-line="93" selection-start-column="35" selection-end-line="93" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -41,11 +60,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mazerunner-dfs-bfs.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="314">
-              <caret line="35" column="21" lean-forward="true" selection-start-line="35" selection-start-column="21" selection-end-line="35" selection-end-column="21" />
+            <state relative-caret-position="345">
+              <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
               </folding>
@@ -91,13 +110,13 @@
         <option value="$PROJECT_DIR$/euclidean.py" />
         <option value="$PROJECT_DIR$/test.py" />
         <option value="$PROJECT_DIR$/dfs_patrick.txt" />
-        <option value="$PROJECT_DIR$/astar_manhattan.py" />
-        <option value="$PROJECT_DIR$/astar_euclidean.py" />
         <option value="$PROJECT_DIR$/MazeRunner_DFS_and_BFS.m" />
         <option value="$PROJECT_DIR$/mazerunner-dfs-bfs.py" />
         <option value="$PROJECT_DIR$/map_maker.py" />
         <option value="$PROJECT_DIR$/dfs_algo.py" />
         <option value="$PROJECT_DIR$/bfs_algo.py" />
+        <option value="$PROJECT_DIR$/astar_euclidean.py" />
+        <option value="$PROJECT_DIR$/astar_manhattan.py" />
       </list>
     </option>
   </component>
@@ -188,23 +207,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/astar_manhattan.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="24" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/astar_euclidean.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="403">
-          <caret line="81" selection-start-line="81" selection-end-line="81" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/MazeRunner_DFS_and_BFS.m">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -241,11 +243,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mazerunner-dfs-bfs.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="35" column="21" lean-forward="true" selection-start-line="35" selection-start-column="21" selection-end-line="35" selection-end-column="21" />
+        <state relative-caret-position="345">
+          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
           <folding>
             <element signature="e#0#16#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/astar_euclidean.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="403">
+          <caret line="93" column="35" selection-start-line="93" selection-start-column="35" selection-end-line="93" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/astar_manhattan.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="417">
+          <caret line="92" selection-start-line="92" selection-end-line="92" />
         </state>
       </provider>
     </entry>

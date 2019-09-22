@@ -1,5 +1,5 @@
-from MazeRunner import *
 import math
+
 
 def euclidean(initial_map): # Computes A* euclidean distance
     euclidean_map=initial_map
@@ -11,10 +11,11 @@ def euclidean(initial_map): # Computes A* euclidean distance
     print(euclidean_map)
     visited=[]
     discovered = [(0,0)]
-    previous={} #neighbor of current node that has smallest distance
+    path=[]
+    previous={}#neighbor of current node that has smallest distance
     distance={(0,0):0, (1,0):1, (0,1):1}#distance travelled for nodes
     current_index=[0,0]
-    while True: # for each index, discover it's neighbors, and then make the current index the index with shortest distance
+    while True:# for each index, discover it's neighbors, and then make the current index the index with shortest distance
 
         if (current_index[0]-1) >= 0 and euclidean_map[current_index[0]-1][current_index[1]]!=-1:  # top neighbor
             if (current_index[0] - 1, current_index[1]) in discovered:
@@ -30,9 +31,16 @@ def euclidean(initial_map): # Computes A* euclidean distance
 
         if (current_index[1]+1) < len(euclidean_map) and euclidean_map[current_index[0]][current_index[1]+1]!=-1: # right neighbor
             if (current_index[1]+1)==(len(euclidean_map)-1) and (current_index[0])==(len(euclidean_map)-1):
-                visited.append((current_index[0],current_index[1]))
-                visited.append((current_index[0],current_index[1]+1))
-                return visited
+                previous[(len(euclidean_map) - 1, len(euclidean_map) - 1)] = (current_index[0], current_index[1])
+                visited.append((current_index[0], current_index[1]))
+                visited.append((current_index[0] + 1, current_index[1]))
+                backtrack = (len(euclidean_map) - 1, len(euclidean_map) - 1)
+                while backtrack != (0, 0):
+                    path.append(backtrack)
+                    backtrack = previous[backtrack]
+                path.append((0, 0))
+                path.reverse()
+                return path
             if (current_index[0], current_index[1] + 1) in discovered:
                 if distance[(current_index[0], current_index[1])] < distance[previous[(current_index[0], current_index[1]+1)]]:
                     previous[(current_index[0] , current_index[1]+1)] = (current_index[0], current_index[1])
@@ -45,9 +53,16 @@ def euclidean(initial_map): # Computes A* euclidean distance
 
         if (current_index[0]+1) < len(euclidean_map) and euclidean_map[current_index[0]+1][current_index[1]]!=-1: # bottom neighbor
             if (current_index[0] + 1) == (len(euclidean_map) - 1) and (current_index[1]) == (len(euclidean_map) - 1):
+                previous[(len(euclidean_map) - 1, len(euclidean_map) - 1)] = (current_index[0], current_index[1])
                 visited.append((current_index[0], current_index[1]))
-                visited.append((current_index[0]+1, current_index[1]))
-                return visited
+                visited.append((current_index[0] + 1, current_index[1]))
+                backtrack = (len(euclidean_map) - 1, len(euclidean_map) - 1)
+                while backtrack != (0, 0):
+                    path.append(backtrack)
+                    backtrack = previous[backtrack]
+                path.append((0, 0))
+                path.reverse()
+                return path
             if (current_index[0]+1, current_index[1]) in discovered:
                 if distance[(current_index[0], current_index[1])] < distance[previous[(current_index[0]+1, current_index[1])]]:
                     previous[(current_index[0]+1, current_index[1])] = (current_index[0], current_index[1])
@@ -77,7 +92,3 @@ def euclidean(initial_map): # Computes A* euclidean distance
         for (x, y) in discovered:
             if euclidean_map[x][y] + distance[(x, y)] - 1 < minimum:
                 current_index=[x,y]
-
-print(euclidean(map_creator(dimension_size,p_value)))
-
-
