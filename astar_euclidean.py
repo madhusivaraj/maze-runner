@@ -11,10 +11,10 @@ def euclidean(initial_map): # Computes A* euclidean distance
     print(euclidean_map)
     visited=[]
     discovered = [(0,0)]
-    previous={}#neighbor of current node that has smallest distance
+    previous={} #neighbor of current node that has smallest distance
     distance={(0,0):0, (1,0):1, (0,1):1}#distance travelled for nodes
     current_index=[0,0]
-    while True:# for each index, discover it's neighbors, and then make the current index the index with shortest distance
+    while True: # for each index, discover it's neighbors, and then make the current index the index with shortest distance
 
         if (current_index[0]-1) >= 0 and euclidean_map[current_index[0]-1][current_index[1]]!=-1:  # top neighbor
             if (current_index[0] - 1, current_index[1]) in discovered:
@@ -79,3 +79,5 @@ def euclidean(initial_map): # Computes A* euclidean distance
                 current_index=[x,y]
 
 print(euclidean(map_creator(dimension_size,p_value)))
+
+
