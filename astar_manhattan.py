@@ -1,4 +1,4 @@
-from MazeRunner import *
+
 
 def manhattan(initial_map): # Computes A* manhattan distance
     manhattan_map=initial_map
@@ -10,6 +10,7 @@ def manhattan(initial_map): # Computes A* manhattan distance
                 manhattan_map[i][j]= abs(i-(len(manhattan_map)-1))+abs(j-(len(manhattan_map)-1))
     print(manhattan_map)
     visited=[]
+    path=[]
     discovered = [(0,0)]
     previous={}#neighbor of current node that has smallest distance
     distance={(0,0):0, (1,0):1, (0,1):1}#distance travelled for nodes
@@ -30,9 +31,16 @@ def manhattan(initial_map): # Computes A* manhattan distance
 
         if (current_index[1]+1) < len(manhattan_map) and manhattan_map[current_index[0]][current_index[1]+1]!=-1: # right neighbor
             if (current_index[1]+1)==(len(manhattan_map)-1) and (current_index[0])==(len(manhattan_map)-1):
-                visited.append((current_index[0],current_index[1]))
-                visited.append((current_index[0],current_index[1]+1))
-                return visited
+                previous[(len(manhattan_map) - 1, len(manhattan_map) - 1)] = (current_index[0], current_index[1])
+                visited.append((current_index[0], current_index[1]))
+                visited.append((current_index[0], current_index[1] + 1))
+                backtrack = (len(manhattan_map) - 1, len(manhattan_map) - 1)
+                while backtrack != (0, 0):
+                    path.append(backtrack)
+                    backtrack = previous[backtrack]
+                path.append((0, 0))
+                path.reverse()
+                return path
             if (current_index[0], current_index[1] + 1) in discovered:
                 if distance[(current_index[0], current_index[1])] < distance[previous[(current_index[0], current_index[1]+1)]]:
                     previous[(current_index[0] , current_index[1]+1)] = (current_index[0], current_index[1])
@@ -45,9 +53,16 @@ def manhattan(initial_map): # Computes A* manhattan distance
 
         if (current_index[0]+1) < len(manhattan_map) and manhattan_map[current_index[0]+1][current_index[1]]!=-1: # bottom neighbor
             if (current_index[0] + 1) == (len(manhattan_map) - 1) and (current_index[1]) == (len(manhattan_map) - 1):
+                previous[(len(manhattan_map) - 1, len(manhattan_map) - 1)] = (current_index[0], current_index[1])
                 visited.append((current_index[0], current_index[1]))
-                visited.append((current_index[0]+1, current_index[1]))
-                return visited
+                visited.append((current_index[0] + 1, current_index[1]))
+                backtrack = (len(manhattan_map) - 1, len(manhattan_map) - 1)
+                while backtrack != (0, 0):
+                    path.append(backtrack)
+                    backtrack = previous[backtrack]
+                path.append((0, 0))
+                path.reverse()
+                return path
             if (current_index[0]+1, current_index[1]) in discovered:
                 if distance[(current_index[0], current_index[1])] < distance[previous[(current_index[0]+1, current_index[1])]]:
                     previous[(current_index[0]+1, current_index[1])] = (current_index[0], current_index[1])
@@ -80,4 +95,4 @@ def manhattan(initial_map): # Computes A* manhattan distance
 
 
 
-print(manhattan(map_creator(dimension_size,p_value)))
+
