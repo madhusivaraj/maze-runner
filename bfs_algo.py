@@ -14,29 +14,29 @@ def map_bfs(map=None):
     rs = [] # restricted states
     fringed = list()
     fg_parents=list()
-    fringed(1).lvalue = start# list of states in order they were added to the fringe
-    fg_parents(1).lvalue = start# list of parents of each state in fringed list
+    fringed[0] = start# list of states in order they were added to the fringe
+    fg_parents[0] = start# list of parents of each state in fringed list
 
 
     while len(fg) != 0:
-        st = fg(1)    # state. 2-d vec from fg. newest in fg.
-        fg(1).lvalue = []   # removes state from fg
+        st = fg[0] = null   # state. 2-d vec from fg. newest in fg.
+        #fg(1) = null   # removes state from fg
         if st == goal:
             visited(len(visited) + 1).lvalue = st
             parent_list(len(parent_list) + 1).lvalue = st_prev
-            path(1).lvalue = st
+            path[0] = st
             while sum(path(len(path))) != sum(start):
-                for i in fringed[1:len(fringed)]:                # find position of state in visited list
-                    if fringed(i) == st:
+                for i in fringed[0:len(fringed)]:                # find position of state in visited list
+                    if fringed[i] == st:
                         st_pos = i
                         break
                         st_parent = fg_parents(st_pos)
-                        path(len(path) + 1).lvalue = st_parent
+                        path[len(path) + 1] = st_parent
                         st_prev = st
                         st = st_parent
                         path2 = path
-                        for i in path[1:length(path)]:                        # this loop reverses order of path list
-                            path(i).lvalue = path2(length(path) - i + 1)
+                        for i in path[0:len(path)]:                        # this loop reverses order of path list
+                            path[i] = path2[len(path) - i + 1]
                             output = path
                             print('Success')
                             return
