@@ -17,7 +17,6 @@ hardest_map = map;
 hardest_map_score = map_score;
 score_thresh = 1;
 
-%while map_score < score_thresh
 for i=1:2000
     new_map = map;
     dims = size(map);
