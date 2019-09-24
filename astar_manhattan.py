@@ -1,3 +1,5 @@
+
+
 def manhattan(initial_map): # Computes A* manhattan distance
     manhattan_map=initial_map
 
@@ -38,7 +40,8 @@ def manhattan(initial_map): # Computes A* manhattan distance
                     backtrack = previous[backtrack]
                 path.append((0, 0))
                 path.reverse()
-                return path
+
+                return visited, path
             if (current_index[0], current_index[1] + 1) in discovered:
                 if distance[(current_index[0], current_index[1])] < distance[previous[(current_index[0], current_index[1]+1)]]:
                     previous[(current_index[0] , current_index[1]+1)] = (current_index[0], current_index[1])
@@ -60,7 +63,8 @@ def manhattan(initial_map): # Computes A* manhattan distance
                     backtrack = previous[backtrack]
                 path.append((0, 0))
                 path.reverse()
-                return path
+
+                return visited, path
             if (current_index[0]+1, current_index[1]) in discovered:
                 if distance[(current_index[0], current_index[1])] < distance[previous[(current_index[0]+1, current_index[1])]]:
                     previous[(current_index[0]+1, current_index[1])] = (current_index[0], current_index[1])
@@ -90,3 +94,7 @@ def manhattan(initial_map): # Computes A* manhattan distance
         for (x, y) in discovered:
             if manhattan_map[x][y] + distance[(x, y)] - 1 < minimum:
                 current_index=[x,y]
+
+
+
+
