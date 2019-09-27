@@ -1,12 +1,14 @@
+from copy import deepcopy
+
 def manhattan(initial_map): # Computes A* manhattan distance
-    manhattan_map=initial_map
+    manhattan_map=deepcopy(initial_map)
 
 
     for i in range(len(manhattan_map)): #calculates Manhattan distances
         for j in range(len(manhattan_map)):
             if manhattan_map[i][j] == 0:
                 manhattan_map[i][j]= abs(i-(len(manhattan_map)-1))+abs(j-(len(manhattan_map)-1))
-    print(manhattan_map)
+
     visited=[] # List of coordinates that have been explored
     path=[] #shortest path
     discovered = [(0,0)] #list of coordinates that have been found but not explored
@@ -38,8 +40,11 @@ def manhattan(initial_map): # Computes A* manhattan distance
                     backtrack = previous[backtrack]
                 path.append((0, 0))
                 path.reverse()
-
-                return len(visited)+len(discovered), path #Returns visited length + discovered length for part3: maximal nodes expanded
+                for (x,y) in path:
+                    manhattan_map[x][y]=-3
+                for z in range(len(manhattan_map)):
+                    print(manhattan_map[z])
+                return len(visited)+len(discovered), len(path),path #Returns visited length + discovered length for part3: maximal nodes expanded
             if (current_index[0], current_index[1] + 1) in discovered:
                 if distance[(current_index[0], current_index[1])] < distance[previous[(current_index[0], current_index[1]+1)]]:
                     previous[(current_index[0] , current_index[1]+1)] = (current_index[0], current_index[1])
@@ -61,8 +66,12 @@ def manhattan(initial_map): # Computes A* manhattan distance
                     backtrack = previous[backtrack]
                 path.append((0, 0))
                 path.reverse()
+                for (x, y) in path:
+                    manhattan_map[x][y] = -3
+                for z in range(len(manhattan_map)):
+                    print(manhattan_map[z])
 
-                return len(visited)+len(discovered),path
+                return len(visited)+len(discovered),len(path),path
             if (current_index[0]+1, current_index[1]) in discovered:
                 if distance[(current_index[0], current_index[1])] < distance[previous[(current_index[0]+1, current_index[1])]]:
                     previous[(current_index[0]+1, current_index[1])] = (current_index[0], current_index[1])
@@ -87,7 +96,7 @@ def manhattan(initial_map): # Computes A* manhattan distance
         discovered.remove((current_index[0],current_index[1])) #Removes current index from discovered since we visited it.
 
         if len(discovered) == 0: #Explored all nodes and couldn't find a path.
-            return "Failure"
+            return 1,"Failure"
         minimum = manhattan_map[(discovered[0])[0]][(discovered[0])[1]] +distance[discovered[0]] #Sets min distance to first coordinate
         current_index=discovered[0] #if bottom loop fails to assign new current_index, proceed with using the first coordinate in discovered as current_index.
         for (x, y) in discovered:

@@ -1,12 +1,13 @@
 import random
+import numpy as np
 
-def baseline(initial_map, q_value):  # Using A* Manhattan to find shortest path
+def baseline(initial_map, q_value):  # Using A* Manhattan to find shortest path and traverses when fire exists.
     manhattan_map = initial_map
     for i in range(len(manhattan_map)): #calculcates Manhattan distances
         for j in range(len(manhattan_map)):
             if manhattan_map[i][j] == 0:
                 manhattan_map[i][j] = abs(i - (len(manhattan_map) - 1)) + abs(j - (len(manhattan_map) - 1))
-    print(manhattan_map)
+    print(np.matrix(manhattan_map))
     visited = [] # List of coordinates that have been explored
     path = [] #shortest path
     discovered = [(0, 0)] #list of coordinates that have been found but not explored
@@ -105,16 +106,16 @@ def baseline(initial_map, q_value):  # Using A* Manhattan to find shortest path
             for j in range(len(manhattan_map)):
                 if manhattan_map[i][j]!=-2 and manhattan_map[i][j]!=-1: #ignore cells that are already on fire and closed cells
                     numNeighbors=0
-                    if i-1>=0 and manhattan_map[i-1][j]==-2:
+                    if i-1>=0 and manhattan_map[i-1][j]==-2: #If top neighbor exists and is on fire, increment numNeighbors on fire.
                         numNeighbors+=1
-                    if i + 1 <len(manhattan_map) and manhattan_map[i + 1][j] == -2:
+                    if i + 1 <len(manhattan_map) and manhattan_map[i + 1][j] == -2: #if bot exists and is on fire, increment numNeigbors
                         numNeighbors+=1
-                    if j - 1 >= 0 and manhattan_map[i][j-1] == -2:
+                    if j - 1 >= 0 and manhattan_map[i][j-1] == -2: #if left exists and is on fire, increment numNeighbors
                         numNeighbors+=1
-                    if j+1<len(manhattan_map) and manhattan_map[i][j+1]==-2:
+                    if j+1<len(manhattan_map) and manhattan_map[i][j+1]==-2: #if right exists and is on fire, increment numNeighbors
                         numNeighbors+=1
 
-                    if random.random()<1-(1-q_value)**numNeighbors:
+                    if random.random()<1-(1-q_value)**numNeighbors: #calculates if cell should be on fire or not.
                         manhattan_map[i][j]=-2
 
 

@@ -35,10 +35,11 @@ for i in range(2000):
         actualMap=new_map
         map_score=new_map_score
     else:
-        if random.randint(-1,0)<= math.exp(-k*(map_score-new_map_score)*t):
+        if random.random()<= math.exp(-k*(map_score-new_map_score)*t):
             actualMap= new_map
             map_score=new_map_score
 
     score_list.append(map_score)
     t+=1
+print(score_list)
 print(hardest_map_score)
