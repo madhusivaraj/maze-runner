@@ -15,7 +15,7 @@ import random
 
 print("start")
 #print(baseline(map_creator(3,0),0))
-print("answer", dynamic(map_creator(5,0),0.5))
+print("answer", dynamic(map_creator(5,0.13),0))
 print("end")
 
 

@@ -1,14 +1,12 @@
 import random
 
 def baseline(initial_map, q_value):  # Using A* Manhattan to find shortest path
-    print("intl", initial_map)
     manhattan_map = initial_map
-    print("manhattan map1", manhattan_map)
     for i in range(len(manhattan_map)): #calculcates Manhattan distances
         for j in range(len(manhattan_map)):
             if manhattan_map[i][j] == 0:
                 manhattan_map[i][j] = abs(i - (len(manhattan_map) - 1)) + abs(j - (len(manhattan_map) - 1))
-    print("manhattan map2", manhattan_map)
+    print(manhattan_map)
     visited = [] # List of coordinates that have been explored
     path = [] #shortest path
     discovered = [(0, 0)] #list of coordinates that have been found but not explored
